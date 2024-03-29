@@ -19,6 +19,10 @@ function App() {
       return updatedTurns;
     });
   }
+  function handleRematch() {
+    setTurn([]);
+    setActivePlayer("X");
+  }
   return (
     <main>
       <div id="game-container">
@@ -26,7 +30,11 @@ function App() {
           <Player name="player 1" symbol="X" isActive={activePlayer === "X"} />
           <Player name="player 2" symbol="O" isActive={activePlayer === "O"} />
         </ol>
-        <GameBoard onSelect={handleActivePlayer} turns={playerTurn} />
+        <GameBoard
+          onSelect={handleActivePlayer}
+          turns={playerTurn}
+          handleRematch={handleRematch}
+        />
       </div>
       <Log turns={playerTurn} />
     </main>
