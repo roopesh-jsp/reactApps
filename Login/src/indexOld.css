@@ -116,7 +116,9 @@ input.invalid {
   border-color: #f73f3f;
   background-color: #fed2d2;
 }
-
+input:focus {
+  outline: none;
+}
 .actions {
   display: flex;
   justify-content: space-between;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Input from "./Input.jsx";
+
 export default function AuthInputs() {
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
@@ -19,7 +19,7 @@ export default function AuthInputs() {
       className=" bg-slate-600 p-8 rounded text-white max-w-lg mx-auto "
     >
       <div className="controls">
-        {/* <p>
+        <p>
           <label className={notvalidMail ? "invalid" : ""}>email</label>
           <input
             type="email"
@@ -34,11 +34,9 @@ export default function AuthInputs() {
             className={notvalidPass ? "invalid" : ""}
             onChange={(event) => handlechange(setPass, event.target.value)}
           />
-        </p> */}
-        <Input label="E - mail" notValidity={notvalidMail} />
-        <Input label="password" notValidity={notvalidPass} />
+        </p>
       </div>
-      <div className="flex gap-5 mt-4 justify-end">
+      <div className="flex gap-3 justify-between">
         <button className="text-amber-400 hover:text-amber-600">
           create new account
         </button>
