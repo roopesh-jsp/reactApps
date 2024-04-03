@@ -1,10 +1,16 @@
 import { calculateInvestmentResults, formatter } from "../util/investment";
 export default function Results({ inputs }) {
   let results = calculateInvestmentResults(inputs);
+  if (results.length === 0) {
+    return (
+      <p className="Error-para">Cannot display for 0 zero years and less !!</p>
+    );
+  }
   const initialInvest =
     results[0].valueEndOfYear -
     results[0].annualInvestment -
     results[0].interest;
+
   return (
     <table id="result">
       <thead>

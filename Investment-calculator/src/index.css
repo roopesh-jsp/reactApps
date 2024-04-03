@@ -87,3 +87,13 @@ body {
 .center {
   text-align: center;
 }
+.Error-para {
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 0.76rem;
+  border: 2px solid red;
+  padding: 1rem;
+  width: fit-content;
+  color: #baf1db;
+  margin: 20px auto;
+}
