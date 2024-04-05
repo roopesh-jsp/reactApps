@@ -1,30 +1,51 @@
 import { useRef, useState } from "react";
+import Result from "./Result.jsx";
 export default function Challenge({ title, targetTime }) {
   const timer = useRef();
-  const [start, setStart] = useState(false);
-  const [timerExp, setTimerExp] = useState(false);
+  const dialog = useRef();
+
+  const [timeRemaining, setTimeRemaining] = useState(targetTime * 1000);
+
+  const timerAlive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
+  if (timeRemaining <= 0) {
+    clearInterval(timer.current);
+    dialog.current.open();
+  }
   function handleStart() {
-    setStart(true);
-    timer.current = setTimeout(() => {
-      setTimerExp(true);
-    }, targetTime * 1000);
+    timer.current = setInterval(() => {
+      setTimeRemaining((prev) => prev - 10);
+    }, 10);
   }
   function handleStop() {
-    clearTimeout(timer.current);
+    dialog.current.open();
+    clearInterval(timer.current);
+  }
+  function handleRest() {
+    setTimeRemaining(targetTime * 1000);
   }
   return (
-    <section className="challenge">
-      <h2>{title}</h2>
-      <p>{timerExp ? "you lost !!" : ""}</p>
-      <p className="challenge-time">
-        {targetTime} second{targetTime > 1 ? "s" : ""}
-      </p>
-      <p>
-        <button onClick={start ? handleStop : handleStart}>
-          {start ? "stop" : "start"} challenge
-        </button>
-      </p>
-      <p>{start ? "time is running..." : "timer in active"}</p>
-    </section>
+    <>
+      <Result
+        ref={dialog}
+        targetTime={targetTime}
+        result="lost"
+        resetFun={handleRest}
+        timeLeft={timeRemaining}
+      />
+
+      <section className="challenge">
+        <h2>{title}</h2>
+
+        <p className="challenge-time">
+          {targetTime} second{targetTime > 1 ? "s" : ""}
+        </p>
+        <p>
+          <button onClick={timerAlive ? handleStop : handleStart}>
+            {timerAlive ? "stop" : "start"} challenge
+          </button>
+        </p>
+        <p>{timerAlive ? "time is running..." : "timer in active"}</p>
+      </section>
+    </>
   );
 }
