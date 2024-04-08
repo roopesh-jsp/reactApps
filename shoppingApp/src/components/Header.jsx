@@ -3,7 +3,7 @@ import { CartItems } from "./CartContext";
 import Modal from "./Modal.jsx";
 
 export default function Header() {
-  const { items } = useContext(CartItems);
+  const { items, theme, setTheme } = useContext(CartItems);
   const modal = useRef();
   function handleModal() {
     modal.current.showModal();
@@ -13,7 +13,12 @@ export default function Header() {
       <Modal ref={modal} />
       <header>
         <h2>ShopEr</h2>
-        <button onClick={handleModal}>Cart {items.length}</button>
+        <div className="btns">
+          <button onClick={setTheme}>
+            {theme === "light" ? "dark" : "light"}
+          </button>
+          <button onClick={handleModal}>Cart {items.length}</button>
+        </div>
       </header>
     </>
   );

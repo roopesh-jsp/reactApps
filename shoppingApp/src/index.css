@@ -3,9 +3,16 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
+
+.light {
   background-color: beige;
 }
+.dark {
+  background-color: black;
+  color: aliceblue;
+  height: 100%;
+}
+
 header {
   color: brown;
   display: flex;
@@ -24,6 +31,10 @@ header button {
   font-weight: 600;
   color: rgb(210, 137, 65);
   cursor: pointer;
+}
+.btns {
+  display: flex;
+  gap: 40px;
 }
 /*  */
 #shop {
