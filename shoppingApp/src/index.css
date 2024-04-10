@@ -83,20 +83,19 @@ header button {
 }
 dialog {
   position: absolute;
-
   margin: 300px auto;
-  width: 300px;
-
-  padding: 10px;
+  padding: 20px 10px;
   border-radius: 10px;
   background-color: bisque;
 }
 dialog form {
   align-self: flex-end;
+  margin-top: 10px;
 }
 dialog form button {
   width: 50px;
   margin: 10px 0;
+  cursor: pointer;
 }
 .dialog {
   height: 100%;
@@ -108,4 +107,14 @@ dialog form button {
   display: flex;
   justify-content: space-between;
   padding: 2px 10px 2px 0;
+}
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+.quantity button {
+  width: 25px;
+  cursor: pointer;
 }

@@ -58,7 +58,21 @@ export default function CartContext({ children }) {
       };
     });
   }
-
+  function quantityInc(id) {
+    setCart((prev) => {
+      const reqItem = prev.items.find((item) => item.id === id);
+      const reqIndex = prev.items.indexOf(reqItem);
+      const updatedItem = {
+        ...reqItem,
+        quantity: reqItem.quantity + 1,
+      };
+      prev.items[reqIndex] = updatedItem;
+      return {
+        ...prev,
+        items: [prev.items],
+      };
+    });
+  }
   function handleAddCart(id) {
     const itemPresent = cart.items.find((product) => product.id === id);
     if (itemPresent) {
@@ -103,6 +117,7 @@ export default function CartContext({ children }) {
     addCart: handleAddCart,
     theme: cart.theme,
     setTheme: handleToggleTheme,
+    increment: quantityInc,
   };
 
   return (

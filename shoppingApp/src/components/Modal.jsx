@@ -1,8 +1,10 @@
-import { forwardRef, useContext } from "react";
+import { forwardRef, useContext, useState } from "react";
 import { CartItems } from "./CartContext";
 
-const Modal = forwardRef(function Modal({}, ref) {
-  const { items } = useContext(CartItems);
+const Modal = forwardRef(function Modal({ TotalPrice }, ref) {
+  const { items, increment } = useContext(CartItems);
+  const formatedPrice = TotalPrice.toFixed(2);
+
   return (
     <dialog ref={ref}>
       <div className="dialog">
@@ -10,11 +12,22 @@ const Modal = forwardRef(function Modal({}, ref) {
           {items.map((item) => (
             <p key={item.id}>
               <span>{item.title}</span>
-              <span>{item.quantity}</span>
+              <span className="quantity" key={item.id + 1}>
+                <button className="quantityChange">-</button>
+                <span>{item.quantity}</span>
+                <button
+                  className="quantityChange"
+                  onClick={() => increment(item.id)}
+                >
+                  +
+                </button>
+              </span>
             </p>
           ))}
         </div>
-        <form method="diaalog">
+
+        <form method="dialog">
+          <p>Price :{formatedPrice}</p>
           <button>close</button>
         </form>
       </div>
