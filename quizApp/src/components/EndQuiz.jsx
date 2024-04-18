@@ -1,25 +1,37 @@
+import { useState } from "react";
 import Endimg from "../assets/quiz-complete.png";
 import questions from "../questions.js";
 export default function EndQuiz({ result }) {
+  let finalLogs = [];
   let score = 0;
   for (let i = 0; i < questions.length; i++) {
+    finalLogs = [
+      ...finalLogs,
+      [result[i], questions[i].answers[0], Math.random()],
+    ];
+
     if (result[i] === questions[i].answers[0]) {
       score = score + 100;
     }
   }
-  console.log(questions);
+  console.log(finalLogs);
   return (
     <div id="summary">
       <img src={Endimg} alt="" />
       <h2>Quiz completed</h2>
       <h2>Score : {score}</h2>
       <h4>{score / 100} / 7</h4>
-      <p>Correct answers -</p>
+      <p>Correct answers - Logs</p>
       <ol>
-        {questions.map((ques, idx) => (
-          <li key={ques.id}>
-            {" "}
-            {idx + 1}-> {ques.answers[0]}
+        {finalLogs.map((ele, idx) => (
+          <li className="log" key={ele[2]}>
+            <span className="indexes">{idx + 1} . </span>
+            <span className={ele[0] === ele[1] ? "correct" : "wrong"}>
+              {" "}
+              {ele[0]}
+            </span>{" "}
+            <br />
+            <br /> <span>{ele[1]}</span>
           </li>
         ))}
       </ol>
