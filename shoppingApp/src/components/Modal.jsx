@@ -11,17 +11,20 @@ const Modal = forwardRef(function Modal({ TotalPrice }, ref) {
         <div className="cartItems">
           {items.map((item) => (
             <p key={item.id}>
+              {console.log(item)}
               <span>{item.title}</span>
-              <span className="quantity" key={item.id + 1}>
-                <button className="quantityChange">-</button>
-                <span>{item.quantity}</span>
-                <button
+              {/* <span className="quantity" key={item.id}>
+                <button className="quantityChange">-</button> */}
+              <button>-</button>
+              <span>{item.quantity}</span>
+              <button onClick={() => increment(item.id)}>+</button>
+              {/* <button
                   className="quantityChange"
                   onClick={() => increment(item.id)}
                 >
                   +
-                </button>
-              </span>
+                </button> */}
+              {/* </span> */}
             </p>
           ))}
         </div>

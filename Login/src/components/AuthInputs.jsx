@@ -20,7 +20,12 @@ export default function AuthInputs() {
     >
       <div className="controls">
         <p>
-          <label className={notvalidMail ? "invalid" : ""}>email</label>
+          <label className={notvalidMail ? "invalid" : ""}>
+            email{" "}
+            <span className=" relative left-5 text-s font-light">
+              {notvalidMail ? " (should contain @ )" : ""}
+            </span>
+          </label>
           <input
             type="email"
             className={notvalidMail ? "invalid" : ""}
@@ -28,7 +33,12 @@ export default function AuthInputs() {
           />
         </p>
         <p>
-          <label className={notvalidPass ? "invalid" : ""}>password</label>
+          <label className={notvalidPass ? "invalid" : ""}>
+            password
+            <span className=" relative left-5 font-light text-xs">
+              {notvalidPass ? " (should contain atleast 6 characters )" : ""}
+            </span>
+          </label>
           <input
             type="password"
             className={notvalidPass ? "invalid" : ""}
