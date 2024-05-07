@@ -1,21 +1,51 @@
+import { useState } from "react";
+
 export default function Login({ toogle }) {
   function handleClick() {
     console.log("hai");
     toogle(false);
   }
+  const [enteredValues, setEnteredValues] = useState({
+    email: "",
+    password: "",
+  });
+  function handleChange(indentifier, event) {
+    setEnteredValues((prev) => ({
+      ...prev,
+      [indentifier]: event.target.value,
+    }));
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("sucessfull !!");
+    console.log(enteredValues);
+    setEnteredValues({ email: "", password: "" });
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Login</h2>
 
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            value={enteredValues.email}
+            onChange={(event) => handleChange("email", event)}
+          />
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" />
+          <input
+            id="password"
+            type="password"
+            name="password"
+            value={enteredValues.password}
+            onChange={(event) => handleChange("password", event)}
+          />
         </div>
       </div>
 
