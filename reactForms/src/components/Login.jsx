@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { logins } from "../data/data.js";
 export default function Login({ toogle }) {
   function handleClick() {
     console.log("hai");
@@ -17,8 +17,8 @@ export default function Login({ toogle }) {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("sucessfull !!");
-    console.log(enteredValues);
+    logins.push(enteredValues);
+    console.log(logins);
     setEnteredValues({ email: "", password: "" });
   }
   return (
