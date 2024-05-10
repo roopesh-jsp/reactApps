@@ -106,9 +106,6 @@ h1 {
 .meal-item-actions {
   margin-bottom: 1.5rem;
 }
-.meal-item-actions button {
-  cursor: pointer;
-}
 
 .cart h2 {
   margin: 1rem 0;
