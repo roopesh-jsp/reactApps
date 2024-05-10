@@ -38,6 +38,21 @@ function cartReducer(state, action) {
   }
   if (action.type === "ITEM_REMOVE") {
     //...remove
+    const currIndex = state.items.findIndex(
+      (item) => item.id === action.payLoad.id
+    );
+    const updatedCart = [...state.items];
+    if (updatedCart[currIndex].quantity < 2) {
+      updatedCart.splice(currIndex, 1);
+    } else {
+      updatedCart[currIndex] = {
+        ...updatedCart[currIndex],
+        quantity: updatedCart[currIndex].quantity - 1,
+      };
+    }
+    return {
+      items: updatedCart,
+    };
   }
   return state;
 }
@@ -58,7 +73,7 @@ export function CartContextProvider({ children }) {
     addItem,
     removeItem,
   };
-  console.log(cart.items);
+
   return (
     <CartContext.Provider value={cxtValue}>{children}</CartContext.Provider>
   );
