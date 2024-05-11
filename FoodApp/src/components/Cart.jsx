@@ -15,6 +15,9 @@ export default function Cart() {
   function handleCloseCart() {
     userCxt.hideCart();
   }
+  function handelShowCheckout() {
+    userCxt.showCheckout();
+  }
   return (
     <Modal className="cart" open={userCxt.response === "cart"}>
       <h2>Your items -</h2>
@@ -35,7 +38,7 @@ export default function Cart() {
         <Button onlyText onClick={handleCloseCart}>
           close
         </Button>
-        <Button onClick={handleCloseCart}>checkout</Button>
+        <Button onClick={handelShowCheckout}>checkout</Button>
       </div>
     </Modal>
   );
