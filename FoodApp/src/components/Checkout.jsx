@@ -17,12 +17,12 @@ export default function Checkout() {
     fetch("http://localhost:3000/orders", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         order: {
           items: cartCxt.items,
-          custumer: data,
+          customer: data,
         },
       }),
     });
@@ -30,13 +30,13 @@ export default function Checkout() {
   return (
     <Modal open={userCxt.response === "checkout"}>
       <form onSubmit={handleSubmit}>
-        <Input label="full-name" id="fullName" type="text" />
+        <Input label="name" id="name" type="text" />
         <Input label="E-mail" id="email" type="email" />
         <Input label="Street" id="street" type="street" />
-        <p className="control-row">
-          <Input label="post-code" id="postCode" type="text" />
-          <Input label="reffer-no" id="referNo" type="text" />
-        </p>
+        <div className="control-row">
+          <Input label="post-code" id="postal-code" type="text" />
+          <Input label="city" id="city" type="text" />
+        </div>
         <div className="modal-actions">
           <Button type="button" onlyText onClick={handleCloseCheckout}>
             close
