@@ -6,7 +6,7 @@ export default function Pokedex() {
   const input = useRef();
   const [enteredValue, setEnteredVlue] = useState("");
   function getValue() {
-    setEnteredVlue(input.current.value);
+    setEnteredVlue(input.current.value.toLowerCase());
   }
   return (
     <div id="pokedex">
@@ -14,7 +14,7 @@ export default function Pokedex() {
         <input type="text" id="search" ref={input} />
         <button onClick={getValue}>Search</button>
       </div>
-      {enteredValue ? <Pokemon pokemon={enteredValue} /> : null}
+      {enteredValue ? <Pokemon Pokemon={enteredValue} /> : null}
     </div>
   );
 }
