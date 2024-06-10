@@ -8,9 +8,12 @@ export default function Pokemon({ Pokemon }) {
     setIsLoading(true);
     fetch(`https://pokeapi.co/api/v2/pokemon/${Pokemon}`)
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        setIsLoading(false);
+        return setData(data);
+      })
       .catch((err) => console.log(err));
-    setIsLoading(false);
+
     console.log(data);
   }, [Pokemon]);
 

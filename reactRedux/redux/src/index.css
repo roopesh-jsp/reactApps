@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+#counter {
+  width: 80%;
+  border: 2px solid black;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 50px;
+}
+h1 {
+  font-size: 35px;
+  color: rgb(255, 89, 0);
+  margin: 0 0 100px 0;
+  text-transform: uppercase;
+}
+h4 {
+  font-size: 30px;
+}
+button {
+  margin: 50px 10px 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  min-width: 100px;
+  text-transform: uppercase;
+  background-color: rgb(219, 56, 27);
+  color: aliceblue;
+  font-size: 25px;
+  cursor: pointer;
+}
