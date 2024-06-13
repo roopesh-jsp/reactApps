@@ -1,30 +1,25 @@
 import { useSelector, useDispatch } from "react-redux";
+import { counterActions } from "../store";
 export default function Counter() {
-  const counter = useSelector((x) => x.counter);
-  const show = useSelector((y) => y.showCounter);
-  const xy = useDispatch();
-  function handleInc() {
-    xy({ type: "inc" });
-  }
+  const counterVal = useSelector((s) => s.counter.counter);
+  const show = useSelector((s) => s.counter.show);
+  const dispatch = useDispatch();
   function handleDec() {
-    xy({ type: "dec" });
+    dispatch(counterActions.dec());
+  }
+  function handleInc() {
+    dispatch(counterActions.inc());
   }
   function inc100() {
-    xy({
-      type: "inc100",
-      payload: {
-        value: 100,
-      },
-    });
+    dispatch(counterActions.inc100(50));
   }
   function handleToggle() {
-    xy({ type: "toggle" });
+    dispatch(counterActions.toggle());
   }
   return (
     <div id="counter">
       <h1>--- redux counter ---</h1>
-      {console.log(show)}
-      {show && <h4>{counter}</h4>}
+      {show && <h4>{counterVal}</h4>}
       <div>
         <button onClick={handleDec}>-</button>
         <button onClick={inc100}>inc by 100</button>
