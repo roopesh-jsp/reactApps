@@ -19,7 +19,7 @@ export async function action({ request, params }) {
   const res = await fetch("http://localhost:8080/events", {
     method: "POST",
     headers: {
-      "content-Type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(eventData),
   });

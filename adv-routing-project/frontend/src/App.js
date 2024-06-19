@@ -68,7 +68,7 @@ const route = createBrowserRouter([
           {
             path: "/events/new",
             element: <NewEventPage />,
-            // action: newEventAction,
+            action: newEventAction,
           },
         ],
       },
