@@ -80,3 +80,40 @@ export async function deleteEvent({ id }) {
 
   return response.json();
 }
+
+// export async function editEvent({ id, event }) {
+//   const res = await fetch(`http://localhost:3000/events/${id}`, {
+//     method: "PUT",
+//     body: JSON.stringify(event),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   if (!res.ok) {
+//     const err = new Error("cant post data");
+//     err.code = res.status;
+//     err.info = await res.json();
+//     throw err;
+//   }
+
+//   return res.json();
+// }
+
+export async function updateEvent({ id, event }) {
+  const response = await fetch(`http://localhost:3000/events/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({ event }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while updating the event");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  return response.json();
+}
