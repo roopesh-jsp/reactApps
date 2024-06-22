@@ -1,0 +1,32 @@
+.container {
+  padding: 1rem;
+  background-color: #484848;
+  margin: 10px 0;
+  border-radius: 20px;
+}
+.container p {
+  display: none;
+  transition: all 400ms ease-in;
+}
+.container p.active {
+  display: block;
+}
+.challenge {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+.challenge img {
+  width: 100px;
+}
+.cta {
+  display: flex;
+  justify-content: space-between;
+}
+.cta button {
+  margin: 10px;
+  padding: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}

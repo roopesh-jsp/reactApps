@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  width: 90%;
+  min-width: 500px;
+  justify-content: space-between;
+  margin: 30px auto;
+}
+.header h1 {
+  text-transform: uppercase;
+  color: whitesmoke;
+}
+.header button {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background-color: #b45ec7;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  text-transform: capitalize;
+}
