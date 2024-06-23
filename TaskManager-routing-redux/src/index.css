@@ -24,6 +24,9 @@ dialog form {
   display: flex;
   flex-direction: column;
 }
+.field input {
+  padding: 5px;
+}
 .field label {
   text-transform: uppercase;
   cursor: pointer;
@@ -52,4 +55,32 @@ form h4 {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
+}
+.backdrop {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: rgba(13, 13, 13, 0.5);
+}
+.backdrop h1 {
+  margin: 20px 0 0px 25px;
+}
+.selectedImg {
+  border: 3px solid rgb(211, 66, 50);
+  border-radius: 50%;
+  padding: 2px;
+  scale: 1.05;
+}
+button {
+  background-color: rgb(104, 18, 18);
+  transition: scale 300ms ease;
+}
+button:hover {
+  scale: 1.05;
+}
+body {
+  overflow-x: hidden;
 }

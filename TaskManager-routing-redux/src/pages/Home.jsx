@@ -1,12 +1,13 @@
 import cityImg from "../assets/city.jpg";
 import classes from "./home.module.css";
 import { Link } from "react-router-dom";
+import spidy from "../assets/spiderMan.jpg";
 export default function Home() {
   return (
     <>
       <header>
         <div className={classes.background_image}>
-          <img src={cityImg} alt="background-img" />
+          <img src={spidy} alt="background-img" />
         </div>
         <div className={classes.mainHeading}>
           <h1> are you ready for challenges</h1>

@@ -1,0 +1,23 @@
+body {
+  background-color: rgb(40, 40, 40);
+}
+button {
+  cursor: pointer;
+}
+.background {
+  height: 100vh;
+  width: 100vw;
+}
+.background img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+.mm {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

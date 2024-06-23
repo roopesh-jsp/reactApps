@@ -30,7 +30,7 @@ header {
   padding: 20px;
   border-radius: 10px;
   border: none;
-  background-color: rgb(142, 199, 180);
+  background-color: rgb(104, 18, 18);
   font-size: 20px;
   font-weight: 600;
   text-transform: capitalize;
@@ -38,7 +38,7 @@ header {
   cursor: pointer;
 }
 .mainHeading button a {
-  color: #242424;
+  color: whitesmoke;
   text-decoration: none;
 }
 main {
@@ -51,7 +51,7 @@ main {
 }
 .content h1 {
   margin-bottom: 20px;
-  color: rgb(229, 118, 38);
+  color: rgb(224, 80, 80);
 }
 .content p {
   color: whitesmoke;

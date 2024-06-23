@@ -11,5 +11,5 @@ button {
 .active {
   background-color: #000000;
   color: rgb(255, 255, 255);
-  border: 2px solid #b45ec7;
+  border: 2px solid rgb(104, 18, 18);
 }
