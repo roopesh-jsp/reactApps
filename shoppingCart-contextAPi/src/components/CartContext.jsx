@@ -6,45 +6,10 @@ export const CartItems = createContext({
   addCart: () => {},
   theme: "light",
   setTheme: () => {},
+  removeCart: () => {},
 });
-function cartReducer(cart, action) {
-  // if (action.type === "Add_cart") {
-  //   const itemPresent = cart.items.find(
-  //     (product) => product.id === action.payLoad.id
-  //   );
-  //   if (itemPresent) {
-  //     const itemIndex = cart.items.indexOf(itemPresent);
-  //     const reqItem = cart.items[itemIndex];
-  //     const modifiedEntry = {
-  //       ...reqItem,
-  //       quantity: reqItem.quantity + 1,
-  //     };
-  //     cart.items[itemIndex] = modifiedEntry;
-  //     return {
-  //       ...cart,
-  //       items: [...cart.items],
-  //     };
-  //   } else {
-  //     const newItem = DUMMY_PRODUCTS.find(
-  //       (product) => product.id === action.payLoad.id
-  //     );
-  //     const newEntry = {
-  //       ...newItem,
-  //       quantity: 1,
-  //     };
-  //     return {
-  //       ...cart,
-  //       items: [...cart.items, newEntry],
-  //     };
-  //   }
-  // }
-}
 
 export default function CartContext({ children }) {
-  // const [cartState, cartDispatch] = useReducer(cartReducer, {
-  //   items: [],
-  //   theme: "light",
-  // });
   const [cart, setCart] = useState({
     items: [],
     theme: "light",
@@ -58,21 +23,7 @@ export default function CartContext({ children }) {
       };
     });
   }
-  function quantityInc(id) {
-    setCart((prev) => {
-      const reqItem = prev.items.find((item) => item.id === id);
-      const reqIndex = prev.items.indexOf(reqItem);
-      const updatedItem = {
-        ...reqItem,
-        quantity: reqItem.quantity + 1,
-      };
-      prev.items[reqIndex] = updatedItem;
-      return {
-        ...prev,
-        items: [prev.items],
-      };
-    });
-  }
+
   function handleAddCart(id) {
     const itemPresent = cart.items.find((product) => product.id === id);
     if (itemPresent) {
@@ -81,8 +32,8 @@ export default function CartContext({ children }) {
       const modifiedEntry = {
         ...reqItem,
         quantity: reqItem.quantity + 1,
+        total: reqItem.price * (reqItem.quantity + 1),
       };
-
       setCart((prev) => {
         prev.items[itemIndex] = modifiedEntry;
         return {
@@ -95,8 +46,8 @@ export default function CartContext({ children }) {
       const newEntry = {
         ...newItem,
         quantity: 1,
+        total: newItem.price,
       };
-
       setCart((prev) => {
         return {
           ...prev,
@@ -104,20 +55,49 @@ export default function CartContext({ children }) {
         };
       });
     }
-    // cartDispatch({
-    //   type: "Add_cart",
-    //   payLoad: {
-    //     id: id,
-    //   },
-    // });
   }
 
+  function handleRemoveCart(id) {
+    const existingItem = cart.items.find((el) => el.id === id);
+
+    if (existingItem) {
+      const existingIndex = cart.items.indexOf(existingItem);
+
+      if (existingItem.quantity <= 1) {
+        //remove from cart
+        setCart((prev) => {
+          prev.items.splice(existingIndex, 1);
+          return {
+            ...prev,
+            items: [...prev.items],
+          };
+        });
+      } else {
+        //decrease the quantity
+        console.log("dec");
+        const modifiedEntry = {
+          ...existingItem,
+          quantity: existingItem.quantity - 1,
+          total: existingItem.price * (existingItem.quantity - 1),
+        };
+        setCart((prev) => {
+          prev.items[existingIndex] = modifiedEntry;
+          return {
+            ...prev,
+            items: [...prev.items],
+          };
+        });
+      }
+    } else {
+      return;
+    }
+  }
   const contexValue = {
     items: cart.items,
     addCart: handleAddCart,
     theme: cart.theme,
     setTheme: handleToggleTheme,
-    increment: quantityInc,
+    removeCart: handleRemoveCart,
   };
 
   return (
