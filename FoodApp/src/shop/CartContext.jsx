@@ -42,7 +42,7 @@ function cartReducer(state, action) {
     const currIndex = state.items.findIndex(
       (item) => item.id === action.payLoad.id
     );
-    const updatedCart = [...sta te.items];
+    const updatedCart = [...state.items];
     if (updatedCart[currIndex].quantity < 2) {
       updatedCart.splice(currIndex, 1);
     } else {

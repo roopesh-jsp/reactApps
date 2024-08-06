@@ -19,13 +19,14 @@ export default function Quiz() {
 
   const isQuizCompleted = ansChoosed.length === questions.length;
   if (isQuizCompleted) {
-    return <EndQuiz result={ansChoosed} />;
+    return <EndQuiz result={ansChoosed} setResult={setAnsChoosed} />;
   }
   return (
     <div id="quiz">
       <div id="question">
         {/* <ProgressBar timeOut={4000} onTimeOut={skipQuestion} /> */}
         <h2>{questions[currQuestionIndex].text}</h2>
+        <button onClick={() => handleClick(null)}>skip</button>
         <ul id="answers">
           {shuffledAnswers.current.map((answer) => (
             <li key={answer} className="answer">

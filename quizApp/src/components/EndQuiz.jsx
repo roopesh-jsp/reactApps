@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Endimg from "../assets/quiz-complete.png";
 import questions from "../questions.js";
-export default function EndQuiz({ result }) {
+export default function EndQuiz({ result, setResult }) {
   let finalLogs = [];
   let score = 0;
   for (let i = 0; i < questions.length; i++) {
@@ -14,7 +14,9 @@ export default function EndQuiz({ result }) {
       score = score + 100;
     }
   }
-  console.log(finalLogs);
+  function restart() {
+    setResult([]);
+  }
   return (
     <div id="summary">
       <img src={Endimg} alt="" />
@@ -28,13 +30,14 @@ export default function EndQuiz({ result }) {
             <span className="indexes">{idx + 1} . </span>
             <span className={ele[0] === ele[1] ? "correct" : "wrong"}>
               {" "}
-              {ele[0]}
+              {ele[0] === null ? "skipped" : ele[0]}
             </span>{" "}
             <br />
             <br /> <span>{ele[1]}</span>
           </li>
         ))}
       </ol>
+      <button onClick={restart}>try again</button>
     </div>
   );
 }
