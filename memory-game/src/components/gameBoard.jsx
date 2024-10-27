@@ -25,6 +25,10 @@ export default function GameBoard() {
       .sort((a, b) => Math.random() - 0.5)
       .map((ele, idx) => ({ id: idx, number: ele }));
     setCards(shuffledCards);
+    setWon(false);
+    setFlipped([]);
+    setmatched([]);
+    setDisabled(false);
   }
 
   function isMatched(id) {
@@ -66,11 +70,22 @@ export default function GameBoard() {
   function isSolved(id) {
     return matched.includes(id);
   }
+  function checkWon() {
+    console.log(cards.length === matched.length);
+
+    return cards.length === matched.length;
+  }
+
   useEffect(() => {
     initGame();
   }, [NoGrids]);
+  // useEffect(() => {
+  //   if (checkWon()) {
+  //     setWon(true);
+  //   }
+  // }, [matched, NoGrids]);
   return (
-    <div className="w-fit ml-auto mr-auto mt-10 flex flex-col gap-10 justify-center">
+    <div className="w-fit ml-auto mr-auto mt-10 flex flex-col gap-10 justify-center items-center">
       <h1 className="text-3xl text-center font-bold">Memory game</h1>
       <div className="flex gap-5 items-center ">
         <label htmlFor="grids" className="text-md font-semibold capitalize">
@@ -88,7 +103,7 @@ export default function GameBoard() {
       </div>
       {/* board */}
       <div
-        className="grid gap-2 mb-4"
+        className="grid gap-2 mb-4 "
         style={{
           gridTemplateColumns: `repeat(${NoGrids},minmax(0,1fr))`,
           width: `min(100%,${NoGrids * 6}em)`,
@@ -98,7 +113,7 @@ export default function GameBoard() {
           return (
             <div
               key={idx}
-              className={` flex  items-center justify-center cursor-pointer aspect-square font-bold rounded-lg ${
+              className={` flex  items-center justify-center cursor-pointer aspect-square font-bold rounded-lg  ${
                 isFlipped(ele.id)
                   ? isSolved(ele.id)
                     ? "bg-green-500 text-white"
@@ -112,6 +127,19 @@ export default function GameBoard() {
           );
         })}
       </div>
+      {checkWon() && (
+        <div className="font-bold  text-center animate-bounce duration-100">
+          <h1 className="text-3xl capitalize text-green-600">you won</h1>
+        </div>
+      )}
+      {checkWon() && (
+        <button
+          onClick={initGame}
+          className="border-emerald-400 border-2 bg-green-200 px-5 py-2 rounded-md cursor-pointer capitalize"
+        >
+          reset
+        </button>
+      )}
     </div>
   );
 }
