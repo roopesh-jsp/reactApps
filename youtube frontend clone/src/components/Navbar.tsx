@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <div
       id="Navbar"
-      className="flex justify-between gap:10 lg:gap-20 py-2 px-3 mb-4"
+      className="flex justify-between gap:10 lg:gap-20 py-2 px-3 mb-4 "
     >
       <div
         className={`md:flex gap-4 items-center  ${
