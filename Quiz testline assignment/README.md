@@ -7,6 +7,7 @@ A fun and interactive quiz game built with React. The game awards +1 for correct
 - [Introduction](#introduction)
 - [Features](#features)
 - [ScreenShots](#screenshots)
+- [Video]("video")
 
 ## Introduction
 
@@ -23,6 +24,11 @@ This project is a quiz game built using React. It fetches questions from an exte
   ```
 
   ```
+## Video Walkthrough
+
+Watch the video walkthrough of the project here:  
+[Interactive Quiz Application with Gamification - React Project Walkthrough](https://youtu.be/1iCkHJD_bBE)
+
 
 ## Screenshots
 
