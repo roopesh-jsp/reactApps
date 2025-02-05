@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "sour gummy", "sans-serif";
+}
+:root {
+  --light-color: #eeeeee;
+  --black-color: #1d1616;
+  --red-color: #d84040;
+  --darkred-color: #8e1616;
+}
+body {
+  background-color: var(--light-color);
+  color: var(--black-color);
+}
+
+#input {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  position: relative;
+}
+
+#input input {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 20px;
+  border: 2px solid var(--darkred-color);
+  border-radius: 20px;
+}
+
+#input button {
+  padding: 5px 10px;
+  position: absolute;
+  right: 15px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  top: 10px;
+  background-color: var(--red-color);
+  color: var(--light-color);
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+#input button:hover {
+  transform: scale(1.05);
+}
+
+.container {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+.container_todos {
+  background-color: antiquewhite;
+  width: 47.5%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--darkred-color);
+}
+.container_todos_heading {
+  background-color: var(--darkred-color);
+  color: var(--light-color);
+  font-size: 25px;
+  padding: 10px 20px;
+}
+
+#todos {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(209, 37, 89);
+  color: #eeeeee;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: grab;
+}
+
+.todo input {
+  padding: 3px 10px;
+}
+.cta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}

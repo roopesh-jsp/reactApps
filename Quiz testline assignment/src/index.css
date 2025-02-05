@@ -136,6 +136,9 @@ html {
 }
 
 /* results page  */
+.resluts {
+  padding: 20px;
+}
 .result {
   padding: 20px;
   border-radius: 10px;
