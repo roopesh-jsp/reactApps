@@ -53,7 +53,7 @@ body {
   /* background-color: aqua; */
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 .container_todos {
@@ -70,7 +70,7 @@ body {
   padding: 10px 20px;
 }
 
-#todos {
+.todos {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -93,7 +93,29 @@ body {
 }
 .cta {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   cursor: pointer;
+}
+.cta * {
+  /* padding: 10px; */
+  /* background-color: var(--black-color); */
+  width: 20px;
+}
+
+.edit_btn {
+  position: relative;
+  top: 2px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+
+    gap: 30px;
+    align-items: center;
+  }
+  .container_todos {
+    width: 90%;
+  }
 }
