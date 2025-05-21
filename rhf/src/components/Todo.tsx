@@ -8,17 +8,29 @@ function Todo({ todo }: { todo: Todos }) {
     copyTodos[index].isCompleted = e.target.checked;
     setTodos(copyTodos);
   };
+  const deleteTodo = () => {
+    let copyTodos = [...todos];
+    copyTodos = copyTodos.filter((t) => t.id !== todo.id);
+    setTodos(copyTodos);
+  };
   return (
-    <div>
-      <div>
+    <div className="flex justify-between items-center gap-10 bg-stone-300 p-2 rounded-lg mt-2">
+      <div className="flex justify-between items-center gap-4">
         <input
           type="checkbox"
           checked={todo.isCompleted}
           onChange={handleCheck}
+          className="w-4 h-4 cursor-pointer rounded-full appearance-none border-1 border-black checked:bg-blue-300"
         />
         <span>{todo.text}</span>
       </div>
-      <button>Delete</button>
+      <button
+        onClick={deleteTodo}
+        className="cursor-pointer text-red-400
+      font-bold text-sm "
+      >
+        DEL
+      </button>
     </div>
   );
 }

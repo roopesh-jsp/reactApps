@@ -3,7 +3,7 @@ import TodoContextProvider from "./context/TodoContextWrapper";
 
 function App() {
   return (
-    <div className="w-screen h-screen">
+    <div>
       <TodoContextProvider>
         <Todos />
       </TodoContextProvider>
