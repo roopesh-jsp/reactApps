@@ -27,7 +27,7 @@ function Todos() {
   };
 
   return (
-    <div className="w-[80%] mx-auto bg-stone-200 p-4 rounded-lg mt-10 flex gap-4 justify-between">
+    <div className="w-[80%] mx-auto bg-stone-200 p-4 rounded-lg mt-10 flex gap-4 justify-between pr-4 max-h-[80vh] ">
       <form onSubmit={handleSubmit(onSubmit)} className="">
         <input
           type="text"
@@ -47,7 +47,7 @@ function Todos() {
           </p>
         )}
       </form>
-      <div>
+      <div className="pr-2 h-[70vh] overflow-y-scroll ">
         {todos.map((todo) => (
           <Todo key={todo.id} todo={todo} />
         ))}
